@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+RewriteRule ^masuk\.html$ login.php [L]
+RewriteRule ^dashboard\.html$ media.php?module=dashboard [L]
+RewriteRule ^daftar-guru\.html media.php?module=guru&act=list [L]
+RewriteRule ^input-guru\.html media.php?module=guru&act=add [L]
+RewriteRule ^edit-guru\.html media.php?module=guru&act=edit&id=$1 [L]
+
+Options All -Indexes
+</IfModule>
