@@ -16,18 +16,20 @@
                 session_start();
                 if($_SESSION['level'] < 3 ){ ?>
                         <li><a href="dashboard.html">Home</a></li>
+                        <li><a href="profile.html">Profile</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Guru <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="daftar-guru.html">Daftar Guru</a></li>
                                 <li><a href="input-guru.html">Input Guru</a></li>
-                                <li><a href="#">Something else here</a></li>
+
                                 <li class="divider"></li>
-                                <li class="dropdown-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
+                                <li class="dropdown-header">Nilai Guru</li>
+                                <li><a href="daftar-nilai-guru.html">Daftar Nilai Guru</a></li>
+
                             </ul>
                         </li>
+
                         <li><a href="home.html">Kriteria</a></li>
                         <li><a href="home.html">Laporan</a></li>
 

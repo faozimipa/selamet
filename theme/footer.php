@@ -1,6 +1,6 @@
 	<footer class="footer  navbar-inverse">
       <div class="container">
-        <p class="text-muted">Copyright <?= date('Y');  ?> By <?= $author ?></p>
+        <p class="text-muted">Copyright <?= $footnote; ?></p>
       </div>
     </footer>
 <!-- Bootstrap core JavaScript

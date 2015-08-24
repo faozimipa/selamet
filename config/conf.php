@@ -3,9 +3,11 @@ include('koneksi.php');
 
 $alamat_web = 'http://selamet.ozi/';
 $author = 'Selamet';
+$alamat_author ='https://facebook.com/xxx';
 $nama_web = 'SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN GURU TELADAN';
 $alamat = '';
 $logo = '';
+$footnote = 'Design by <a href='.$alamat_author.'>'.$author.'</a> | Sistem Pendukung Keputusan Pemilihan Guru Teladan | &copy Copyright '.date('Y');
 
 
 

@@ -19,6 +19,7 @@ if ($ketemu > 0){
     header('location:dashboard.html');
 }
 else{
-    echo "ora ono user iki";
+    echo "<script>alert('Username atau Pasword Anda salah'); window.location = 'masuk.html'</script>";
+
 }
  

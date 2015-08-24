@@ -5,7 +5,8 @@ $module = $_GET['module'];
 $m=$module;
 if($m=='dashboard'
 	or $m=='guru'
-	or $m=='bantuan'
+ or $m=='nilai'
+	or $m=='profile'
  or $m=='login'
 	)
 {

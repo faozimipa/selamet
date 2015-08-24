@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+RewriteRule ^home\.html$ media.php?module=home [L]
+RewriteRule ^informasi\.html$ media.php?module=informasi [L]
+RewriteRule ^bantuan\.html$ media.php?module=bantuan [L]
+
+
+RewriteRule ^masuk\.html$ login.php [L]
+
+
+Options All -Indexes
+</IfModule>

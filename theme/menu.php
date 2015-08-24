@@ -15,6 +15,7 @@
                 <li><a href="home.html">Home</a></li>
                 <li><a href="informasi.html">Informasi</a></li>
                 <li><a href="bantuan.html">Bantuan</a></li>
+                <li><a href="backend">Admin</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

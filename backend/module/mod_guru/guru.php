@@ -30,9 +30,9 @@ switch($_GET['act'])
                 echo "<td> $baris[mapel]</td>";
                 echo "<td>
 
-                    <a href='/../backend/media.php?module=guru&act=view&id=$baris[nip]'><i class='glyphicon glyphicon-eye-open'></i> </a>
-                    <a href='/../backend/media.php?module=guru&act=edit&id=$baris[nip]'><i class='glyphicon glyphicon-edit'></i> </a>
-                    <a href='$act?module=guru&act=delete&id=$baris[nip]'><i class='glyphicon glyphicon-remove'></i> </a>
+                    <a href='/../backend/media.php?module=guru&act=view&id=$baris[nip]'><i class='glyphicon glyphicon-eye-open'></i> Lihat </a>
+                    <a href='/../backend/media.php?module=guru&act=edit&id=$baris[nip]'><i class='glyphicon glyphicon-edit'></i> Edit</a>
+                    <a href='$act?module=guru&act=delete&id=$baris[nip]'><i class='glyphicon glyphicon-remove'></i> Hapus</a>
 
                  </td>";
                 echo "</tr>";
