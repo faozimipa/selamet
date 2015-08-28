@@ -1,7 +1,5 @@
 <?php
-
 include ('config/conf.php');
-include ('config/func.php');
 include('theme/header.php');
 include('theme/menu.php');
 ?>

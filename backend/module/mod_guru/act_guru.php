@@ -1,11 +1,11 @@
 <?php
 include("/../../../config/koneksi.php");
+include("/../../../config/func_rahasia.php");
 $module = $_GET['module'];
 $act = $_GET['act'];
 
 if($module=='guru' AND $act=='input' ){
     //var_export($_POST);
-
     mysql_query("insert into guru
                 set nip = '$_POST[nip]',
                     nama = '$_POST[nama]',
@@ -26,21 +26,34 @@ if($module=='guru' AND $act=='input' ){
 
 }
 
-if($module=='user' AND $act=='save' ){
+if($module=='guru' AND $act=='save' ){
     //var_export($_POST);
-    mysql_query("update user
-                set username = '$_POST[username]',
-                    password = '$_POST[password]',
-                    nama = '$_POST[nama]',
-					jenis_kelamin = '$_POST[jenis_kelamin]',
-                    asal = '$_POST[asal]'
-                where id='$_POST[id]'
+
+   $update = mysql_query("update guru
+                set nama = '$_POST[nama]',
+				                tempat_lahir = '$_POST[tempat_lahir]',
+				                tanggal_lahir = '$_POST[tanggal_lahir]',
+				                jenis_kelamin = '$_POST[jenis_kelamin]',
+                    pendidikan = '$_POST[pendidikan]',
+                    sekolah = '$_POST[sekolah]',
+                    mapel = '$_POST[mapel]'
+                where nip ='$_POST[nip]'
               ");
-    header('location:../../media.php?module='.$module.'&act=index');
+    if($update){
+        echo "<script>alert('Data Berhasil diUbah'); window.location = '/backend/daftar-guru.html'</script>";
+    }else{
+        echo "<script>alert('Data Gagal diUbah'); window.location = '/backend/daftar-guru.html'</script>";
+    }
+
 }
 if($module=='guru' AND $act=='delete' ){
-    mysql_query("delete from user where username='$_GET[id]'");
-    mysql_query("delete from guru where nip='$_GET[id]'");
+    $id = des($_GET['id']);
+    $delete =mysql_query("delete from user where username='$id'");
+    $delete2 = mysql_query("delete from guru where nip='$id'");
+    if ($delete AND $delete2){
+        echo "<script>alert('Data berhasil diHapus'); window.location = '/backend/daftar-guru.html'</script>";
+    }else{
+        echo "<script>alert('Data Gagal diHapus'); window.location = '/backend/daftar-guru.html'</script>";
+    }
 
-    header('location:/../backend/daftar-guru.html');
 }

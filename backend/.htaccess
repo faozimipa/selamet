@@ -3,11 +3,19 @@ RewriteEngine on
 
 RewriteRule ^masuk\.html$ login.php [L]
 RewriteRule ^dashboard\.html$ media.php?module=dashboard [L]
-RewriteRule ^profile\.html media.php?module=profile [L]
-RewriteRule ^daftar-guru\.html media.php?module=guru&act=list [L]
-RewriteRule ^input-guru\.html media.php?module=guru&act=add [L]
+RewriteRule ^profile\.html$ media.php?module=profile&act=index [L]
+RewriteRule ^edit-profile\.html$ media.php?module=profile&act=edit [L]
+RewriteRule ^edit-password-(.*)-ini\.html$ media.php?module=profile&act=editpassword&id=$1 [L]
+RewriteRule ^daftar-guru\.html$ media.php?module=guru&act=list [L]
+RewriteRule ^input-guru\.html$ media.php?module=guru&act=add [L]
+RewriteRule ^lihat-guru-(.*)-ini\.html$ media.php?module=guru&act=view&id=$1 [L]
+RewriteRule ^edit-guru-(.*)-ini\.html$ media.php?module=guru&act=edit&id=$1 [L]
 
-RewriteRule ^daftar-nilai-guru\.html media.php?module=nilai&act=list [L]
+RewriteRule ^daftar-nilai-guru\.html$ media.php?module=nilai&act=list [L]
+RewriteRule ^input-nilai-guru-(.*)-ini\.html$ media.php?module=nilai&act=input&id=$1 [L]
+RewriteRule ^edit-nilai-guru-(.*)-ini\.html$ media.php?module=nilai&act=edit&id=$1 [L]
 
+RewriteRule ^input-kriteria\.html$ media.php?module=kriteria&act=input [L]
+RewriteRule ^kriteria-normalisasi\.html$ media.php?module=kriteria&act=normalisasi [L]
 Options All -Indexes
 </IfModule>

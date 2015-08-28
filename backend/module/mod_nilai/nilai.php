@@ -6,11 +6,13 @@ date_default_timezone_set("Asia/Jakarta");
 switch($_GET['act'])
 {
     case "list":
-        $query_belum = "SELECT * from guru WHERE nip NOT IN (SELECT nip  from nilai_guru)";
+        $query_belum = "SELECT * from guru WHERE jabatan='2' AND nip NOT IN (SELECT nip  from nilai_guru)";
         $eksekusi_belum = mysql_query($query_belum);
+        $jumlah_belum = mysql_num_rows($eksekusi_belum);
 
-        $query_sudah = "SELECT * from guru WHERE nip IN (SELECT nip  from nilai_guru)";
+        $query_sudah = "SELECT * from guru WHERE jabatan='2' AND nip IN (SELECT nip  from nilai_guru)";
         $eksekusi_sudah = mysql_query($query_sudah);
+        $jumlah_sudah = mysql_num_rows($eksekusi_sudah);
 
 ?>
         <!-- Tabs Style 2 -->
@@ -26,6 +28,15 @@ switch($_GET['act'])
                 <div id="myTabContent2" class="tab-content">
                  <div class="tab-pane fade in active" id="belum">
                       <div class="left-image-text">
+                         <?php if ($jumlah_belum == 0){
+                             ?>
+                          <div class="alert alert-danger" role="alert">
+                              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                              <span class="sr-only"></span>
+                              Semua Nilai Guru Telah diInputkan!!!
+                          </div>
+                             <?php
+                         }else{ ?>
                           <table class="table table-responsive">
                               <thead>
                                   <th>NIP</th>
@@ -39,17 +50,16 @@ switch($_GET['act'])
                               echo "<tr>";
                                   echo "<td> $baris[nip] </td>";
                                   echo "<td> $baris[nama] </td>";
-
+                                    $id = en($baris['nip']);
                                   echo "<td>
-
-                                      <a href='/../backend/media.php?module=nilai&act=input&id=$baris[nip]'><i class='glyphicon glyphicon-screenshot'></i> Input</a>
-
+                                      <a href='input-nilai-guru-$id-ini.html'><i class='glyphicon glyphicon-screenshot'></i> Input</a>
                                   </td>";
                                   echo "</tr>";
                               }
                               ?>
                               </tbody>
                           </table>
+                         <?php } ?>
                       </div>
                  </div>
                  <div class="tab-pane fade" id="sudah">
@@ -67,17 +77,16 @@ switch($_GET['act'])
                               echo "<tr>";
                               echo "<td> $baris[nip] </td>";
                               echo "<td> $baris[nama] </td>";
-
+                                $id= en($baris['nip']);
                               echo "<td>
-
-                                      <a href='/../backend/media.php?module=nilai&act=edit&id=$baris[nip]'><i class='glyphicon glyphicon-edit'></i> Edit</a>
-
+                                      <a href='edit-nilai-guru-$id-ini.html'><i class='glyphicon glyphicon-edit'></i> Edit</a>
                                   </td>";
                               echo "</tr>";
                           }
                           ?>
                           </tbody>
                       </table>
+
                   </div>
                  </div>
                 </div>
@@ -88,97 +97,34 @@ switch($_GET['act'])
 
     break;
     case "input":
-        $id =$_GET['id'];
-        $query = "SELECT * FROM guru WHERE nip='$id'";
+        $id = des($_GET['id']);
+        $query = "SELECT * FROM guru WHERE nip='$id' AND jabatan='2'";
         $eksekusi = mysql_query($query);
         $hasil = mysql_fetch_assoc($eksekusi);
         ?>
         <div class="row">
             <form action="<?= $act; ?>?module=nilai&act=input" method="POST">
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="nip">NIP</label>
-                        <input type="text" readonly="TRUE" class="form-control" name="nip" placeholder="NIP" value="<?= $hasil['nip']; ?>" required="required" />
-                    </div>
-                    <div class="form-group">
-                        <label for="name">Nama</label>
-                        <input type="text" readonly="TRUE" class="form-control" name="nama" placeholder="Nama" value="<?= $hasil['nama']; ?>" required="required" />
-                    </div>
-                <div class="form-group">
-                    <label for="kriteria_satu">C01</label>
-                        <select id="subject" name="kriteria_satu" class="form-control" required="required">
-                            <option value="" selected="">Pilih Kriteria:</option>
-                            <option value="5">Sangat Baik</option>
-                            <option value="4">Baik</option>
-                            <option value="3">Cukup</option>
-                            <option value="2">Kurang</option>
-                            <option value="1">Sangat Kurang</option>
-                        </select>
-                </div>
-
-                    <div class="form-group">
-                        <label for="kriteria_dua">C02</label>
-                        <select id="subject" name="kriteria_dua" class="form-control" required="required">
-                            <option value="" selected="">Pilih Kriteria:</option>
-                            <option value="5">Sangat Baik</option>
-                            <option value="4">Baik</option>
-                            <option value="3">Cukup</option>
-                            <option value="2">Kurang</option>
-                            <option value="1">Sangat Kurang</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="kriteria_tiga">C03</label>
-                        <select id="subject" name="kriteria_tiga" class="form-control" required="required">
-                            <option value="" selected="">Pilih Kriteria:</option>
-                            <option value="5">Sangat Baik</option>
-                            <option value="4">Baik</option>
-                            <option value="3">Cukup</option>
-                            <option value="2">Kurang</option>
-                            <option value="1">Sangat Kurang</option>
-                        </select>
-                    </div>
+                    <?= input('nip','NIP','text',$hasil['nip'],'Y','Y');?>
+                    <?= input('nama','Nama','text',$hasil['nama'],'Y','Y');?>
+                    <?= cnilai('kriteria_satu','C01','');?>
+                    <?= cnilai('kriteria_dua','C02','');?>
+                    <?= cnilai('kriteria_tiga','C03','');?>
                 </div>
 
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="kriteria_empat">C04</label>
-                        <select id="subject" name="kriteria_empat" class="form-control" required="required">
-                            <option value="" selected="">Pilih Kriteria:</option>
-                            <option value="5">Sangat Baik</option>
-                            <option value="4">Baik</option>
-                            <option value="3">Cukup</option>
-                            <option value="2">Kurang</option>
-                            <option value="1">Sangat Kurang</option>
-                        </select>
+                    <?= cnilai('kriteria_empat','C04','');?>
+                    <?= cnilai('kriteria_lima','C05','');?>
+                    <?= cnilai('kriteria_enam','C06','');?>
+                    <div class="col-md-4">
+                        <?= button('submit','btn btn-success btn-block','Input Nilai'); ?>
                     </div>
-
-                    <div class="form-group">
-                        <label for="kriteria_lima">C05</label>
-                        <select id="subject" name="kriteria_lima" class="form-control" required="required">
-                            <option value="" selected="">Pilih Kriteria:</option>
-                            <option value="5">Sangat Baik</option>
-                            <option value="4">Baik</option>
-                            <option value="3">Cukup</option>
-                            <option value="2">Kurang</option>
-                            <option value="1">Sangat Kurang</option>
-                        </select>
+                    <div class="col-md-4">
+                        <?= button('reset','btn btn-warning btn-block','Batal'); ?>
                     </div>
-
-                    <div class="form-group">
-                        <label for="kriteria_enam">C06</label>
-                        <select id="subject" name="kriteria_enam" class="form-control" required="required">
-                            <option value="" selected="">Pilih Kriteria:</option>
-                            <option value="5">Sangat Baik</option>
-                            <option value="4">Baik</option>
-                            <option value="3">Cukup</option>
-                            <option value="2">Kurang</option>
-                            <option value="1">Sangat Kurang</option>
-                        </select>
+                    <div class="col-md-4">
+                        <?= clink('daftar-nilai-guru.html','btn btn-danger btn-block','Kembali'); ?>
                     </div>
-                    <input type=submit class="btn btn-success btn-block" value="Input Nilai">
-
 
                 </div>
 
@@ -186,5 +132,38 @@ switch($_GET['act'])
         </div>
 
         <?php
+    break;
+    case 'edit':
+        $id = des($_GET['id']);
+        $query = "SELECT * FROM nilai_guru,guru WHERE guru.nip='$id' AND nilai_guru.nip='$id'";
+        $eksekusi = mysql_query($query);
+        $hasil = mysql_fetch_assoc($eksekusi);
+        ?>
+        <div class="row">
+            <form action="<?= $act; ?>?module=nilai&act=save" method="POST">
+                <div class="col-md-6">
+                    <?= input('nip','NIP','text',$hasil['nip'],'Y','Y'); ?>
+                    <?= input('nama','Nama','text',$hasil['nama'],'Y','Y'); ?>
+                    <?= cnilai('kriteria_satu','C01',$hasil['kriteria_satu']);?>
+                    <?= cnilai('kriteria_dua','C02',$hasil['kriteria_dua']);?>
+                    <?= cnilai('kriteria_tiga','C03',$hasil['kriteria_tiga']);?>
+                </div>
+                <div class="col-md-6">
+                    <?= cnilai('kriteria_empat','C04',$hasil['kriteria_empat']);?>
+                    <?= cnilai('kriteria_lima','C05',$hasil['kriteria_lima']);?>
+                    <?= cnilai('kriteria_enam','C06',$hasil['kriteria_enam']);?>
+                    <div class="col-md-4">
+                    <?= button('submit','btn btn-success btn-block','Update Nilai'); ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= button('reset','btn btn-warning btn-block','Batal'); ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= clink('daftar-nilai-guru.html','btn btn-danger btn-block','Kembali'); ?>
+                    </div>
+                </div>
+            </form>
+        </div>
+<?php
     break;
 }
