@@ -6,11 +6,11 @@ date_default_timezone_set("Asia/Jakarta");
 switch($_GET['act'])
 {
     case "list":
-        $query_belum = "SELECT * from guru WHERE jabatan='2' AND nip NOT IN (SELECT nip  from nilai_guru)";
+        $query_belum = "SELECT * from guru WHERE jabatan='3' AND nip NOT IN (SELECT nip  from nilai_guru)";
         $eksekusi_belum = mysql_query($query_belum);
         $jumlah_belum = mysql_num_rows($eksekusi_belum);
 
-        $query_sudah = "SELECT * from guru WHERE jabatan='2' AND nip IN (SELECT nip  from nilai_guru)";
+        $query_sudah = "SELECT * from guru WHERE jabatan='3' AND nip IN (SELECT nip  from nilai_guru)";
         $eksekusi_sudah = mysql_query($query_sudah);
         $jumlah_sudah = mysql_num_rows($eksekusi_sudah);
 
@@ -98,7 +98,7 @@ switch($_GET['act'])
     break;
     case "input":
         $id = des($_GET['id']);
-        $query = "SELECT * FROM guru WHERE nip='$id' AND jabatan='2'";
+        $query = "SELECT * FROM guru WHERE nip='$id' AND jabatan='3'";
         $eksekusi = mysql_query($query);
         $hasil = mysql_fetch_assoc($eksekusi);
         ?>
@@ -107,15 +107,15 @@ switch($_GET['act'])
                 <div class="col-md-6">
                     <?= input('nip','NIP','text',$hasil['nip'],'Y','Y');?>
                     <?= input('nama','Nama','text',$hasil['nama'],'Y','Y');?>
-                    <?= cnilai('kriteria_satu','C01','');?>
-                    <?= cnilai('kriteria_dua','C02','');?>
-                    <?= cnilai('kriteria_tiga','C03','');?>
+                    <?= cnilai('n1','C01','');?>
+                    <?= cnilai('n2','C02','');?>
+                    <?= cnilai('n3','C03','');?>
                 </div>
 
                 <div class="col-md-6">
-                    <?= cnilai('kriteria_empat','C04','');?>
-                    <?= cnilai('kriteria_lima','C05','');?>
-                    <?= cnilai('kriteria_enam','C06','');?>
+                    <?= cnilai('n4','C04','');?>
+                    <?= cnilai('n5','C05','');?>
+                    <?= cnilai('n6','C06','');?>
                     <div class="col-md-4">
                         <?= button('submit','btn btn-success btn-block','Input Nilai'); ?>
                     </div>
@@ -144,14 +144,14 @@ switch($_GET['act'])
                 <div class="col-md-6">
                     <?= input('nip','NIP','text',$hasil['nip'],'Y','Y'); ?>
                     <?= input('nama','Nama','text',$hasil['nama'],'Y','Y'); ?>
-                    <?= cnilai('kriteria_satu','C01',$hasil['kriteria_satu']);?>
-                    <?= cnilai('kriteria_dua','C02',$hasil['kriteria_dua']);?>
-                    <?= cnilai('kriteria_tiga','C03',$hasil['kriteria_tiga']);?>
+                    <?= cnilai('n1','C01',$hasil['n1']);?>
+                    <?= cnilai('n2','C02',$hasil['n2']);?>
+                    <?= cnilai('n3','C03',$hasil['n3']);?>
                 </div>
                 <div class="col-md-6">
-                    <?= cnilai('kriteria_empat','C04',$hasil['kriteria_empat']);?>
-                    <?= cnilai('kriteria_lima','C05',$hasil['kriteria_lima']);?>
-                    <?= cnilai('kriteria_enam','C06',$hasil['kriteria_enam']);?>
+                    <?= cnilai('n4','C04',$hasil['n4']);?>
+                    <?= cnilai('n5','C05',$hasil['n5']);?>
+                    <?= cnilai('n6','C06',$hasil['n6']);?>
                     <div class="col-md-4">
                     <?= button('submit','btn btn-success btn-block','Update Nilai'); ?>
                     </div>

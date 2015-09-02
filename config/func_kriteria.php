@@ -53,5 +53,57 @@ function e($var){
     return $var;
 
 }
+//normalisasi
+function norm($nilai,$jum){
+    $h = ($nilai/$jum);
+    return $h;
 
- 
+}
+//pembobotan
+function bobot($n1,$n2,$n3,$n4,$n5,$n6){
+    $r = ($n1 + $n2 + $n3 + $n4 + $n5 + $n6)/6;
+    return $r;
+}
+
+// nilaimaksimal
+function maksi($n1,$n2,$n3,$n4,$n5,$n6,$b1,$b2,$b3,$b4,$b5,$b6){
+    $h = ($n1*$b1) + ($n2*$b2) + ($n3*$b3) + ($n4*$b4) + ($n5*$b5) + ($n6*$b6);
+    return $h;
+}
+//lamda maks
+function lamdamaks($n1,$n2,$n3,$n4,$n5,$n6,$b1,$b2,$b3,$b4,$b5,$b6){
+    $h = (($n1/$b1) + ($n2/$b2) + ($n3/$b3) + ($n4/$b4) + ($n5/$b5) + ($n6/$b6))/6;
+    return $h;
+}
+// menentukan ci
+function ci($nilai){
+    $h = ($nilai - 6)/6;
+    return $h;
+
+}
+// menentukan RC 6
+function rc(){
+    return 1.24;
+}
+// fungsi cr
+function cr($A,$B){
+    $h = $A/$B;
+    return $h;
+}
+// menentukan konsistensi
+function konsisten($nilai){
+    if($nilai <= 0.10){
+        return 'Konsisten';
+    }else{
+        return 'Tidak Konsisten';
+    }
+}
+
+//menentukan nilai akhir guru
+ function na($n1,$n2,$n3,$n4,$n5,$n6,$b1,$b2,$b3,$b4,$b5,$b6){
+     $h = ((exp($b1 * log($n1))) * (exp($b2 * log($n2))) * (exp($b3 * log($n3))) * (exp($b4 * log($n4))) * (exp($b5 * log($n5))) * (exp($b6 * log($n6))));
+     return $h;
+ }
+
+
+

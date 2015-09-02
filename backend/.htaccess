@@ -17,5 +17,8 @@ RewriteRule ^edit-nilai-guru-(.*)-ini\.html$ media.php?module=nilai&act=edit&id=
 
 RewriteRule ^input-kriteria\.html$ media.php?module=kriteria&act=input [L]
 RewriteRule ^kriteria-normalisasi\.html$ media.php?module=kriteria&act=normalisasi [L]
+
+RewriteRule ^hasil-penilaian\.html$ media.php?module=laporan&act=nilai [L]
+RewriteRule ^pengumuman-hasil\.html$ media.php?module=laporan&act=pengumuman [L]
 Options All -Indexes
 </IfModule>

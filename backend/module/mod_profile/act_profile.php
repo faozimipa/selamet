@@ -18,7 +18,7 @@ if($module=='profile' AND $act=='reset' ){
         if($_POST['password_baru'] == $_POST['password_baru_lagi']){
             $update = mysql_query("UPDATE user set password='$password_baru' WHERE username='$id'");
             if($update){
-                echo "<script>alert('Password berhasil diubah'); window.location = '/../backend/edit-password-$iden-ini.html'</script>";
+                echo "<script>alert('Password berhasil diubah'); window.location = '/../backend/profile.html'</script>";
             }else{
                 echo "<script>alert('Password tidak dapat diubah'); window.location = '/../backend/edit-password-$iden-ini.html'</script>";
             }
@@ -27,7 +27,8 @@ if($module=='profile' AND $act=='reset' ){
             echo "<script>alert('Password tidak sama'); window.location = '/../backend/edit-password-$iden-ini.html'</script>";
         }
     }else{
-        echo "beda gan";
+        echo "<script>alert('Password Anda Salah'); window.location = '/../backend/edit-password-$iden-ini.html'</script>";
+
     }
 
 }

@@ -101,16 +101,14 @@ switch($_GET['act'])
 
                                     </tbody>
                                 </table>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <a href="dashboard.html" class="btn btn-success btn-block">Kembali</a>
                                 </div>
-                                <div class="col-md-3">
-                                    <a href="edit-profile.html"
-                                       class="btn btn-warning btn-block">Edit</a>
+                                <div class="col-md-4">
+                                    <a href="edit-profile.html" class="btn btn-warning btn-block">Edit</a>
                                 </div>
-                                <div class="col-md-3">
-                                    <a href="edit-password-<?= en($hasil['nip']); ?>-ini.html"
-                                       class="btn btn-danger btn-block">Edit Password</a>
+                                <div class="col-md-4">
+                                    <a href="edit-password-<?= en($hasil['nip']); ?>-ini.html" class="btn btn-danger btn-block">Edit Password</a>
                                 </div>
                             </div>
                         </div>

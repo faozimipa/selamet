@@ -15,7 +15,7 @@ if($module=='guru' AND $act=='input' ){
                     pendidikan = '$_POST[pendidikan]',
                     sekolah = '$_POST[sekolah]',
                     mapel = '$_POST[mapel]',
-                    jabatan = 3
+                    jabatan = 4
               ");
     mysql_query("insert into user
                 set username = '$_POST[nip]',
@@ -48,9 +48,10 @@ if($module=='guru' AND $act=='save' ){
 }
 if($module=='guru' AND $act=='delete' ){
     $id = des($_GET['id']);
-    $delete =mysql_query("delete from user where username='$id'");
-    $delete2 = mysql_query("delete from guru where nip='$id'");
-    if ($delete AND $delete2){
+    $delete1 = mysql_query("delete from nilai_guru where nip='$id'");
+    $delete2 = mysql_query("delete from user where username='$id'");
+    $delete3 = mysql_query("delete from guru where nip='$id'");
+    if ($delete1 AND $delete2 AND $delete3){
         echo "<script>alert('Data berhasil diHapus'); window.location = '/backend/daftar-guru.html'</script>";
     }else{
         echo "<script>alert('Data Gagal diHapus'); window.location = '/backend/daftar-guru.html'</script>";

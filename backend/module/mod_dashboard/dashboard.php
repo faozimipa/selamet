@@ -1,3 +1,2 @@
-Selamat datang di halaman Administrator
-<?php  echo $_SESSION['nama']; ?>
-<?php  echo $_SESSION['level']; ?>
+Selamat datang <?php  echo $_SESSION['nama']; ?>
+<marquee><h2> <?= $nama_web; ?></h2></marquee>

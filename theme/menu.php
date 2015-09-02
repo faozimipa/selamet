@@ -1,4 +1,4 @@
-<!-- STatic navbar -->
+<!-- Static navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -15,7 +15,7 @@
                 <li><a href="home.html">Home</a></li>
                 <li><a href="informasi.html">Informasi</a></li>
                 <li><a href="bantuan.html">Bantuan</a></li>
-                <li><a href="backend">Admin</a></li>
+                <li><a href="backend">Login</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

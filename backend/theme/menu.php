@@ -18,7 +18,7 @@
                 if($level <= 2 ){ ?>
                         <li><a href="dashboard.html">Home</a></li>
                         <li><a href="profile.html">Profile</a></li>
-                        <?php if($level <= 1){ ?>
+                        <?php if($level <= 2){ ?>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Guru <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
@@ -33,16 +33,18 @@
 
                             </ul>
                         </li>
+                            <?php if($level == 0){ ?>
+                                <li><a href="input-kriteria.html">Kriteria</a></li>
+                            <?php } ?>
 
                        <?php } ?>
+                        <li><a href="hasil-penilaian.html">Laporan</a></li>
 
-                        <li><a href="input-kriteria.html">Kriteria</a></li>
-                        <li><a href="home.html">Laporan</a></li>
-
-                <?php    } elseif($_SESSION >=2) {?>
+                <?php    } elseif($_SESSION >2) {?>
                 <li><a href="dashboard.html">Home</a></li>
                 <li><a href="profile.html">Profile</a></li>
                 <?php } ?>
+                <li><a href="pengumuman-hasil.html">Pengumuman Hasil</a></li>
                 <li><a href="logout.php">Keluar</a></li>
             </ul>
         </div><!--/.nav-collapse -->

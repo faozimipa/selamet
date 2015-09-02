@@ -14,6 +14,8 @@ function jab($tanda){
         return "Admin";
     }elseif($tanda=='1'){
         return "Kepala Sekolah";
+    }elseif($tanda=='2'){
+        return "Wakil Kepala Sekolah";
     }else{
         return "Guru";
     }

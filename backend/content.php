@@ -8,6 +8,7 @@ if($m=='dashboard'
  or $m=='nilai'
 	or $m=='profile'
  or $m=='kriteria'
+ or $m=='laporan'
 
 	)
 {

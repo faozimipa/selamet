@@ -4,6 +4,8 @@ include("/../../../config/func_rahasia.php");
 include("/../../../config/func_kriteria.php");
 $module = $_GET['module'];
 $act = $_GET['act'];
+$valid = $_GET['valid'];
+
 
 if($module=='kriteria' AND $act=='proses' ){
     $a11 = bulat($_POST['a11']);
@@ -63,9 +65,34 @@ if($module=='kriteria' AND $act=='proses' ){
                 mysql_query("$q");
             }
         }
-        echo "<script>alert('Data Berhasil di Input'); window.location = '/backend/kriteria-normalisasi.html'</script>";
 
     }
+    echo "<script>alert('Data Berhasil di Input'); window.location = '/backend/kriteria-normalisasi.html'</script>";
+
+}
+if ($module=='kriteria' AND $act=='save'){
+    if ($valid=='valid'){
+        // simpan bobot
+        $query =("update nilai_kriteria set
+                    b11='$_POST[b11]',
+                    b21='$_POST[b21]',
+                    b31='$_POST[b31]',
+                    b41='$_POST[b41]',
+                    b51='$_POST[b51]',
+                    b61='$_POST[b61]',
+                    valid ='Y'
+                    ");
+        $eksekusi = mysql_query($query);
+        if ($eksekusi){
+            echo "<script>alert('Data Berhasil Disimpan'); window.location = '/backend/setting-laporan.html'</script>";
+        }else{
+            echo "<script>alert('Data Gagal Disimpan'); window.location = '/backend/input-kriteria.html'</script>";
+        }
+    }else{
+            echo "<script>alert('Data Gagal Disimpan'); window.location = '/backend/input-kriteria.html'</script>";
+
+    }
+
 
 
 

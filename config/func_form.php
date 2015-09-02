@@ -51,8 +51,8 @@ function combo2($nama,$atribut,$wajib, $op1,$op2){
                         <label for='$nama'>$atribut</label>
                         <select id='$nama' name='$nama' class='form-control' required='required'>
                             <option value=''>$atribut</option>
-                            <option value=''>$op1</option>
-                            <option value=''>$op2</option>
+                            <option value='$op1'>$op1</option>
+                            <option value='$op2'>$op2</option>
                         </select>
                     </div>
                     ";
@@ -61,8 +61,8 @@ function combo2($nama,$atribut,$wajib, $op1,$op2){
                         <label for='$nama'>$atribut</label>
                         <select id='$nama' name='$nama' class='form-control'>
                             <option value=''>$atribut</option>
-                            <option value=''>$op1</option>
-                            <option value=''>$op2</option>
+                            <option value='$op1'>$op1</option>
+                            <option value='$op2'>$op2</option>
                         </select>
                     </div>
                     ";
